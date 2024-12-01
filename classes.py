@@ -8,7 +8,6 @@ class Snake:
               ]
         self.direction = 'RIGHT'
         self.position = [100, 50]
-
         
 class Apple:
     def __init__(self, window_x, window_y):
@@ -16,7 +15,5 @@ class Apple:
         self.window_y = window_y
         self.position = [random.randrange(1, (self.window_x//10)) * 10, random.randrange(1, (self.window_y//10)) * 10]
         
-        
-    
     def randomApple(self):
         self.position = [random.randrange(1, (self.window_x//10)) * 10, random.randrange(1, (self.window_y//10)) * 10]
