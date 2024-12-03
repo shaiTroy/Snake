@@ -17,3 +17,12 @@ class Apple:
         
     def randomApple(self):
         self.position = [random.randrange(1, (self.window_x//10)) * 10, random.randrange(1, (self.window_y//10)) * 10]
+        
+    def newRandomApple(self, snake, fruits):
+        self.position = [random.randrange(1, (self.window_x//10)) * 10, random.randrange(1, (self.window_y//10)) * 10]
+        if self.position in snake.body:
+            self.newRandomApple(snake, fruits)
+        if self.position in fruits:
+            self.newRandomApple(snake, fruits)
+        print('New apple position:', self.position)
+        
