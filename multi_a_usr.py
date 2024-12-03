@@ -1,6 +1,8 @@
 import pygame
 import time
 from classes import Snake, Apple
+import csv
+
 
 snake_speed = 15
 
@@ -36,6 +38,11 @@ change_to = snake.direction
 
 score = 0
 
+def print_score_to_csv(score):
+    with open('leaderboard.csv', mode='a', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(['usr', score])
+
 def show_score(choice, color, font, size):
   
     score_font = pygame.font.SysFont(font, size)
@@ -65,6 +72,7 @@ def game_over():
     time.sleep(2)
     
     pygame.quit()
+    print_score_to_csv(score)
     
     quit()
 

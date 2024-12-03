@@ -1,6 +1,8 @@
 import pygame
 import time
 from classes import Snake, Apple
+import csv
+
 
 snake_speed = 15
 
@@ -33,6 +35,11 @@ change_to = snake.direction
 
 score = 0
 
+def print_score_to_csv(score):
+    with open('leaderboard.csv', mode='a', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(['ai', score])
+
 def show_score(choice, color, font, size):
     score_font = pygame.font.SysFont(font, size)
     score_surface = score_font.render('Score : ' + str(score), True, color)
@@ -48,6 +55,7 @@ def game_over():
     pygame.display.flip()
     time.sleep(2)
     pygame.quit()
+    print_score_to_csv(score)
     quit()
 
 def calculate_distance(snake_position, food_position):
